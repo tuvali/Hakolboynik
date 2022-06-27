@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'signup' %}
+
+{% block page_head_meta_extra %}
+  {% if message1 %}
+    <script >
+       window.onload =  function message1() {
+            alert('מצטערים אך נראה שיש לך משתמש, נסה להתחבר או להרשם עם מייל שונה');
+        }
+    </script>
+
+{% endif %}
+
+    {% if message2 %}
+    <script >
+       window.onload =  function message2() {
+            alert('לצערינו לא הצלחנו לאתר אותך בין חברינו, תוכל להירשם ולהצטרף!');
+        }
+    </script>
+
+{% endif %}
+{% endblock %}
+
+{% block page_body_main_content %}
+
+    <form name="myForm" action="/insert_user" method="POST">
+        שם מלא <br>
+        <input type="text" name="Full_Name" id="Full_Name" placeholder="שם ושם המשפחה שלך "> <br>
+        כתובת מייל <br>
+        <input type="text" name="email" id="email" placeholder="  כתובת המייל שלך "> <br>
+        כתובת <br>
+        <input type="text" name="address" id="address" placeholder=" כתובת המגורים שלך "> <br>
+        טלפון <br>
+        <input type="text" name="phone" id="phone" placeholder=" מספר הפלאפון שלך "> <br>
+        הזינו ססמא <br>
+        <input type="password" name="password" id="password" placeholder="ססמתכם הסודית" minlength="8"><br>
+        אימות ססמא <br>
+        <input type="password" name="password" placeholder="אימות ססמתכם הסודית" minlength="8"><br>
+        <input type="submit" value="שלח">
+    </form>
+
+{% endblock %}

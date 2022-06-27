@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'contact' %}
+
+{% block page_head_meta_extra %}
+  {% if message %}
+    <script >
+       window.onload =  function message() {
+            alert('תלונתך התקבלה בהצלחה!');
+        }
+    </script>
+
+{% endif %}
+{% endblock %}
+
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('contact.static', filename='css/contact.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+
+    <form action="/insert_contact" , method="post">
+
+        <label for="first_Name">שם פרטי</label><br>
+        <input type="text" name="first_Name" placeholder="שמך הפרטי" pattern="[A-Za-z, ]{2,}"> <br>
+
+        <label for="last_Name">שם משפחה</label><br>
+        <input type="text" name="last_Name" placeholder="שם המשפחה שלך" pattern="[A-Za-z, ]{2,}"><br>
+
+        <label for="email">כתובת מייל</label><br>
+        <input type="text" name="email" placeholder="כתובת המייל שלכם"><br>
+
+        <label for="Category">קטגוריה</label> <br>
+        <select name="complaint_Category">
+            <option value="תלונה על מוצר" id="complaint">תלונה על מוצר</option>
+            <option value="אין מענה טלפוני" id="phone">אין מענה טלפוני</option>
+            <option value="מחפשים עבודה בחנות" id="jobs">מחפשים עבודה בחנות</option>
+            <option value="מעוניינים להודות על השירותים שלכם" id="thanks"> מעוניינים להודות על השירותים שלכם</option>
+
+        </select><br>
+
+        <label for="message">תוכן ההודעה</label><br>
+        <textarea name="message" placeholder="כתבו את הודעתכם" style="height:200px"></textarea><br>
+
+        <input type="submit" value="שלח">
+
+    </form>
+
+
+{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('contact.static', filename='js/contact.js') }}"></script>
+{% endblock %}

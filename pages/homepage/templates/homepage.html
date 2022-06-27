@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'homepage' %}
+
+{% block page_head_meta_extra %}
+ {% if message %}
+    <script >
+       window.onload =  function message() {
+            alert('ברוך הבא לאתר שלנו!');
+        }
+    </script>
+
+{% endif %}
+{% endblock %}
+
+{% block page_body_main_content %}
+   <div class="head-text-main">
+                            <div class="typing"> הכלבויניק</div>
+                          </div>
+
+                          <div class="grid-container-main">
+                          </div>
+                           <div class="about">
+                            <h2> !ברוכים הבאים לאתר החדש שלנו<br>
+                      כאן תוכלו למצוא מידע על כל המוצרים שלנו ולבצע הזמנות אונליין      <br>
+                                חנות השכרת ציוד המציעה ציוד גינון, שיפוץ ובנייה, כלי מטבח<br>
+                                הכלבויניק הוא מחסן ציוד שיתופי. אצלנו תמצאו ציוד גינון, <br>
+                                שיפוץ, מסיבות ופנאי הזמינים לשאילה בימי הפתיחה, במחירים נוחים במיוחד, יחד עם עצה טובה וחיוך :)
+                                <br>
+
+      </h2>
+    </div>
+
+
+                            <div class="img-main"> <img src="toolsMain.jfif" alt="" width="300"></div>
+                          </div>
+
+
+                          <!-----------grid 2 (Trending Items)----------------->
+
+
+                          <div class="grid-container-trending-items">
+
+                            <div class="text-trending-items">
+                              <h1 class="center">הפריטים החדשים</h1>
+                                </div>
+
+                            <div class="item2">
+                              <br></br>
+                              <div class="img-grid2-2"> <img src="https://img.zap.co.il/pics/4/8/1/0/41740184c.gif" alt="" width="150" class="center"></div>
+                              <h4 class="center" >מסור חשמלי</h4>
+                              <p class="center1"> מסור שרשרת מקצועי חשמלי נוח לשימוש ומתאים לעבודה מאומצת ללא שימוש בבנזין המייצר עשן ופליטת גזים
+
+                            </p>
+                             </div>
+
+                            <div class="item3">
+                              <br></br>
+                              <div class="img-grid2-3"> <img src="https://img.zap.co.il/pics/7/6/3/4/22004367c.gif" alt="" width="150" class="center"></div>
+                              <h4 class="center">פטישון</h4>
+                              <p class="center1">פטישון חשמלי  <br>
+                                  800W 100111-001-B <br>
+                                  מבית Makita
+                              </p>
+                            </div>
+
+                            <div class="item4">
+                              <br></br>
+                              <div class="img-grid2-4"> <img src="data:image/jpeg;base64,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" alt="" width="150" class="center"></div>
+                              <h4 class="center">את חפירה</h4>
+                              <p class="center1">את חפירה סטנדרטי שיאפשר לילדים שלכם לקחת חלק בפעילות משותפת עם ההורים, הסבים והסבתות בזמן העבודה בגינה הפרטית או סתם בשביל הכיף בגן הציבורי. כך, אתם וילדכם או נכדכם תזכו לזמן איכות מהנה ואיכותי ביחד.
+                                את החפירה מותאם לשימוש של ילדים מגיל 7 ומעלה, והוא מאושר על ידי מכון התקנים הישראלי.  </p>
+                             </div>
+
+                          </div>
+
+{% endblock %}

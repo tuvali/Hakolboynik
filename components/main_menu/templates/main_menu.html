@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main_menu.css') }}"/>
+
+<div id="grid_container">
+
+    <div id="item1">
+{#        <button class="login"  onclick="document.location='signup.html'" >הרשמה</button>#}
+{#        <button class="login" onclick="/contact" >התחברות</button>#}
+        <div class="inbuttons">
+    {% if session.user=='' %}
+        <a href="/signup">
+            <button class="login">הרשמה</button>
+        </a><br>
+        <a href="/Login">
+            <button class="login">התחברות</button>
+        </a>
+
+
+    {% else %}
+
+{#                <a href="/">#}
+{#            <button class="login">{{ session.user }} ברוך הבא </button>#}
+{#                    <h2>  ברוך הבא </h2>#}
+{#                    <h2> {{ session.user }} </h2>#}
+{##}
+{#                </a>#}
+{#        <br>#}
+{#        <h3> {{ session.user }} ברוך הבא </h3>#}
+        <ul>
+                <li>
+        <a href="/logout">
+            <button class="login">התנתקות</button>
+        </a>
+              </li>
+             <li>
+                            <h2>  ברוך הבא </h2>
+                    <h2> {{ session.user }} </h2>
+             </li>
+        </ul>
+    {% endif %}
+</div>
+    </div>
+
+
+<div id="item2">
+    <div class="bar-chart">
+        {% if session.user == 'carmit@gmail.com' or session.user == 'dina@gmail.com'%}
+            <ul>
+                <li>
+                    <a href="/catalog">ניהול מלאי</a>
+                </li>
+             <li>
+                    <a href="/orders">הזמנות</a>
+                </li>
+{#             <li>#}
+{#                    <a href="/orders">מוצר חדש</a>#}
+{#                </li>#}
+            </ul>
+        {% else %}
+            <ul>
+                <li>
+                    <a href="/contact">יצירת קשר</a>
+                </li>
+                <li>
+                    <a href="/ShoppingCart">העגלה שלך</a>
+                </li>
+{#                <li>#}
+{#                    <a href="/kit">DIY ערכות</a>#}
+{#                </li>#}
+                <li>
+                    <a href="/item list">בחר מוצר</a>
+                </li>
+                <li>
+                    <a href="/"> עמוד הבית</a>
+                </li>
+
+            </ul>
+            {#     <h1>#}
+            {#          <a href="/contact">צור קשר</a>#}
+            {#     </h1>#}
+        {% endif %}
+
+     </div>
+    </div>
+
+{#<div id="item3">#}
+{#            <a href="/Login">#}
+{#            <button class="login">התחברות</button>#}
+{#        </a>#}
+</div>
+
+
+
+</div>

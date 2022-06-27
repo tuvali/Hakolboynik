@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'kit' %}
+
+{% block page_head_meta_extra %}
+    {% if message1 %}
+        <script>
+            window.onload = function message1() {
+                alert("המוצר התווסף לסל בהצלחה!");
+            }
+        </script>
+
+    {% endif %}
+
+    {% if message2 %}
+        <script>
+            window.onload = function message2() {
+                alert("המוצר כבר נמצא בסל שלך, גש והזמן!");
+            }
+        </script>
+
+    {% endif %}
+{% endblock %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('kit.static', filename='css/kit.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+
+    <div class="grid-container">
+
+        <div class="Header">
+            <h1 class="Heading"> שלנו DIY ערכות</h1>
+        </div>
+        {% if session.user=='' %}
+            <h6 class="note">שים לב, כדי להוסיף מוצרים לסל, עלייך להרשם לאתרינו</h6>
+        {% endif %}
+
+        <div class="pro">
+            {% for kit in kit %}
+                {% if kit['type'] == 'pro1' %}
+                    <div class={{ kit[id] }}>
+{#                        <img class="image1" src="{{ kit["kit_image"] }}" alt={{ kit["id"] }}/>#}
+                    <img src="{{ url_for('kit.static', filename=kit.kit_image) }}"
+                                     alt={{ kit["id"] }} style="height:120px"/>
+                        <p><b class="kit">{{ kit['description'] }}</b></p>
+                        <p><b class="price">₪{{ kit['price'] }}</b></p>
+                        {% if session.user!='' and kit["quantity"] >0 %}
+                            <form id="addCartkit1" method="post" action="/addCartkit">
+                                <input type="hidden" name="id" value="{{ kit['id'] }}">
+                                <input type="hidden" name="quantity" value="{{ kit['quantity'] }}">
+                                <input type="hidden" name="price" value="{{ kit['price'] }}">
+                                <input type="hidden" name="name" value="{{ kit['description'] }}">
+                                <input type="hidden" name="kit_image" value="{{ kit['kit_image'] }}">
+                                <button class="buttons" id="addCartkit1" type="submit">הוסף לסל</button>
+                            </form>
+                            <br>
+                            <br>
+                            <br>
+                            {% else %}
+                                    <h5>המוצר אינו זמין כעת</h5>
+                            {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="pro1">
+            {% for kit in kit %}
+                {% if kit['type'] == 'pro2' %}
+                    <div class={{ kit[id] }}>
+{#                        <img class="image1" src="{{ kit["kit_image"] }}" alt={{ kit["id"] }}/>#}
+                                        <img src="{{ url_for('kit.static', filename=kit.kit_image) }}"
+                                     alt={{ kit["id"] }} style="height:120px"/>
+                        <p><b class="kit">{{ kit['description'] }}</b></p>
+                        <p><b class="price">₪{{ kit['price'] }}</b></p>
+                        {% if session.user!='' and kit["quantity"] >0 %}
+                            <form id="addCartkit2" method="post" action="/addCartkit">
+                                <input type="hidden" name="id" value="{{ kit['id'] }}">
+                                <input type="hidden" name="quantity" value="{{ kit['quantity'] }}">
+                                <input type="hidden" name="price" value="{{ kit['price'] }}">
+                                <input type="hidden" name="name" value={{ kit['description'] }}>
+                                <input type="hidden" name="kit_image" value="{{ kit['kit_image'] }}">
+                                <button class="buttons" id="addCartkit2" type="submit">הוסף לסל</button>
+                            </form>
+                            <br>
+                            <br>
+                            <br>
+                            {% else %}
+                                    <h5 class="subtitle">המוצר אינו זמין כעת</h5>
+                            {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

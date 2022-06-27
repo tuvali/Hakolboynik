@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'ItemList' %}
+
+{% block page_head_meta_extra %}
+    {% if message1 %}
+        <script>
+            window.onload = function message1() {
+                alert("המוצר התווסף לסל בהצלחה!");
+            }
+        </script>
+
+    {% endif %}
+
+    {% if message2 %}
+        <script>
+            window.onload = function message2() {
+                alert("המוצר כבר נמצא בסל שלך, גש והזמן!");
+            }
+        </script>
+
+    {% endif %}
+
+{% endblock %}
+
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('ItemList.static', filename='css/ItemList.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+
+    <div class="CartContainer">
+        <div class="Header">
+            <h3 class="Heading">רשימת המוצרים שלנו</h3>
+        </div>
+        {% if session.user=='' %}
+            <h6 class="note">שים לב, כדי להוסיף מוצרים לסל, עלייך להרשם לאתרינו</h6>
+        {% endif %}
+        <div class="SearchPage"><br>
+            <input type="text" id="inputField" onkeyup="SearchFunction()" placeholder="חפש מוצרים">
+
+            <ul id="ProductList" style="list-style-type:none;">
+                <div class="renting"><b><u>מחיר ליום השכרה</u></b></div>
+                <br><br>
+                {% for product in products %}
+                    <li>
+                        <div class="Cart-Items">
+                            <div class="image-box">
+                                <img src="{{ url_for('ItemList.static', filename=product.product_image) }}"
+                                     alt={{ product["id"] }} style="height:120px"/>
+                            </div>
+                            <div class="about">
+                                <h1 class="title">{{ product['name'] }}</h1>
+                                <h3 class="subtitle">{{ product['description'] }}</h3>
+                            </div>
+                            <div class="status">
+                                {% if product['quantity']>0 %}
+                                    <img src="{{ url_for('ItemList.static', filename='images/available.jpg') }}"
+                                         alt={{ product["id"] }}  style="height:60px"/>
+                                {% else %}
+                                    <img src="{{ url_for('ItemList.static', filename='images/notAvailable.jpeg') }}"
+                                         style="height:60px"/>
+                                {% endif %}
+                            </div>
+                            <div class="prices">
+                                <div class="amount">₪{{ product['price'] }}</div>
+                            </div>
+                            {% if session.user!='' and product["quantity"] >0 %}
+                                <form id="addCart" method="post" action="/addCart">
+                                    <input type="hidden" name="id" value="{{ product['id'] }}">
+                                    <input type="hidden" name="quantity" value="{{ product['quantity'] }}">
+                                    <input type="hidden" name="price" value="{{ product['price'] }}">
+                                    <input type="hidden" name="name" value="{{ product['name'] }}">
+                                    <input type="hidden" name="product_image" value="{{ product['product_image'] }}">
+                                    <button class="Button" id="addCart" type="submit">+</button>
+                                </form>
+                                {% else %}
+                                    <h5 class="subtitle">המוצר אינו זמין כעת</h5>
+                            {% endif %}
+                        </div>
+                    </li><br>
+                {% endfor %}
+            </ul>
+
+        </div>
+ {% if session.user!='' %}
+        <div class="checkout">
+            <button class="button" onclick="window.location.href='/ShoppingCart'">מעבר לסל</button>
+        </div>
+    {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('ItemList.static', filename='js/ItemList.js') }}"></script>
+{% endblock %}

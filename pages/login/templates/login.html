@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'login' %}
+{% block page_head_meta_extra %}
+
+{% if message1 %}
+    <script >
+       window.onload =  function message() {
+            alert('אחד או יותר מהפרטים שגויים, נסה שנית!');
+        }
+    </script>
+
+{% endif %}
+
+    {% if message %}
+    <script >
+       window.onload =  function message() {
+            alert('ברוך הבא לאתר שלנו! התחבר ותהנה ממה שיש לנו להציע!');
+        }
+    </script>
+
+{% endif %}
+
+{% endblock %}
+{% block page_body_main_content %}
+ <br><br><br><br>
+    <div class="container">
+      <form name="myForm" action="/Login_user" method="POST">
+        הזינו אימייל עימו התחברתם <br>
+        <input type="email" id="email" name="email" placeholder="כתובת מייל"> <br>
+        הזינו סיסמא <br>
+        <input type="password" id="password" name="password" placeholder="ססמתכם הסודית" minlength="8"><br>
+        <input type="submit" value="שלח"> <br>
+        <br>
+      </form>
+    </div>
+
+{% endblock %}

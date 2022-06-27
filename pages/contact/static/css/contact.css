@@ -1,0 +1,125 @@
+/* Style inputs with type="text", select elements and textareas */
+form {
+    text-align: center
+}
+
+
+@font-face {
+  font-family: header;
+  src: url(elliniaclm-lightitalic-webfont.ttf);
+}
+
+input[type=text], select, textarea {
+
+  width: 50%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical ; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: rgb(206,139,84);
+  color: white;
+  border-radius: 15px;
+  margin: 8px 0;
+  cursor: pointer;
+  width: 10%;
+  height: 5vh;
+  border: solid rgba(131,80,46);
+  font-family: header;
+   font-size: 90%;
+}
+
+/* When moving the mouse over the submit button, add a darker color */
+input[type=submit]:hover {
+  background-color: rgb(204, 103, 35);
+}
+
+.header {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-areas:
+  ' connected connected connected bar-chart bar-chart  bar-chart ' ;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center
+
+}
+
+.connected{
+  background-color: rgb(206,139,84);
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+   width: 10vh;
+   height:7vh;
+   text-align: center;
+  /* height: 30px; */
+  border: solid rgba(131,80,46);
+  margin-top: 0vh;
+  margin-left: 0vh;
+  grid-area:connected;
+  font-family: header;
+   position: center;
+   font-size: 70%;
+}
+
+.textarea {
+    text-align: center
+}
+#first {
+  text-align: center;
+font-family: header;
+}
+#last {
+  text-align: center;
+font-family: header;
+}
+#mail {
+  text-align: center;
+font-family: header;
+}
+#category {
+  text-align: center;
+font-family: header;
+}
+#Category {
+  text-align: center;
+font-family: header;
+}
+
+ #complaint {
+  text-align: center;
+font-family: header;
+}
+#phone {
+  text-align: center;
+font-family: header;
+}
+#jobs {
+  text-align: center;
+font-family: header;
+}
+#thanks {
+  text-align: center;
+font-family: header;
+}
+#subject {
+  text-align: center;
+font-family: header;
+}
+

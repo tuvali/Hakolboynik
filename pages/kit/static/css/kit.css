@@ -1,0 +1,106 @@
+.note{
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: rgb(65,25,0);
+  font-family: header;
+  background-color: rgb(189,126,74);
+ }
+.pro{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-family: header;
+}
+
+.pro1{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-family: header;
+}
+
+   .image1{
+     width: 60%;
+     border: solid rgba(131,80,46);
+     border-radius: 15px;
+     border-width: 8px;
+   }
+
+   .kit{
+     background-color: rgb(189,126,74);
+     color: white;
+     width: 400px;
+     height: 10px;
+     border: solid rgba(131,80,46);
+
+   }
+
+   .buttons{
+    background-color: rgb(206,139,84);
+    color: white;
+    border-radius: 15px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 30%;
+    height: 5%;
+    border: solid rgba(131,80,46);
+    font-family: header;
+   }
+
+   .price{
+    background-color: rgb(210,165,109);
+    color: white;
+    width: 400px;
+    height: 10px;
+    border: solid rgba(131,80,46);
+   }
+
+
+/minimize/
+
+@media (max-width: 600px) {
+
+  .DIY1{
+    width: 100%;
+  }
+  .DIY2{
+    width: 100%;
+  }
+  .DIY3{
+    width: 100%;
+  }
+  .DIY4{
+    width: 100%;
+  }
+  .DIY5{
+    width: 100%;
+  }
+  .DIY6{
+    width: 100%;
+  }
+
+  .buttons{
+    background-color: rgb(206,139,84);
+    color: white;
+    border-radius: 15px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 60%;
+    height: 15%;
+    border: solid rgba(131,80,46);
+    font-family: header;
+   }
+
+
+
+      .Heading{
+        font-size: 50px;
+        width: 100%;
+      }
+
+
+  }

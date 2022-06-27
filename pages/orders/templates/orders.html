@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'orders' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('ItemList.static', filename='css/ItemList.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div class="CartContainer">
+        <div class="Header">
+            <h3 class="Heading">רשימת הזמנות</h3>
+        </div>
+
+            <ul id="ProductList" style="list-style-type:none;">
+                <div class="renting"><b><u>מחיר ליום השכרה</u></b></div>
+                <br><br>
+                {% for order in orders %}
+                    <li>
+                        <div class="Cart-Items">
+
+                            <div class="about">
+                                <h1 class="title">{{ order['id'] }}</h1>
+                            </div>
+
+                            <div class="prices">
+                                <div class="amount">₪{{ order['order_Cost'] }}</div>
+                            </div>
+                            <h3 class="subtitle">{{ order['payer_email'] }}</h3>
+                            <h3 class="subtitle">{{ order['order_Date'] }}</h3>
+
+                        </div>
+                    </li><br>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('orders.static', filename='js/orders.js') }}"></script>
+{% endblock %}

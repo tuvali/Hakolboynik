@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'order_recieved' %}
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('order_recieved.static', filename='css/order_recieved.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div class="CartContainer">
+        <div class="Header">
+            <h1 class="Heading">!הזמנתך התקבלה בהצלחה</h1>
+        </div>
+        <div class="content">
+            <div class="wrapper-1">
+                <div class="wrapper-2">
+                    <h1> מספר הזמנה {{ order_id }}</h1>
+                    <p> !מייל אישור הזמנה נשלח אלייך ברגעים אלו ממש<br> הצוות המסור שלנו עובד על הזמנתך ברגע זה </p>
+                    <p>נשמח לעמוד לרשותך בכל עת </p>
+                    <button class="go-home" onclick="window.location.href='/kit'"> <p>?לא ראית את המארזים שלנו</p> <p>!לחץ כאן</p> </button>
+
+
+                </div>
+                <div class="footer-like">
+                    <p>לא קיבלת מייל אישור
+                        <a href="#">? לחץ כאן לשליחה מחדש</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'ShoppingCart' %}
+
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('ShoppingCart.static', filename='css/ShoppingCart.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+    <div class="grid-container">
+
+        <div class="CartContainer">
+            <div class="Header">
+                <h3 class="Heading">העגלה שלי</h3>
+            </div>
+            <br>
+            {% if session.user=='' %} }
+                <h3 class="Heading">כדי שיהיו לך מוצרים עלייך להיות חבר שלנו, הירשם ותהנה</h3>
+            {% else %}
+                <ul id="ProductList" style="list-style-type:none;">
+                    <br><br>
+                    <div class="renting"><b><u>כמות </u></b></div>
+                    <br><br>
+
+                    {% for product in chosen_products %}
+
+                        <li>
+                            <div class="Cart-Items">
+                                <div class="image-box">
+{#                                    <img src="{{ product["image"] }}" alt={{ product["product_ID"] }} style:#}
+{#                                         height="120px"/>#}
+{#                                 <img src="{{ url_for('ShoppingCart.static', filename='images/available.jpg') }}"#}
+{#                                         alt={{ product["id"] }}  style="height:60px"/>#}
+                                <img src="{{ url_for('ShoppingCart.static', filename=product.image) }}"
+                                     alt={{ product["id"] }} style="height:120px"/>
+                                </div>
+                                <div class="about">
+                                    <h1 class="title">{{ product['product_Name'] }}</h1>
+                                </div>
+                                {% if product['inventory_quantity']>product['quantity'] %}
+                                    <div class="counter">
+                                        <form id="plus" method="post" action="/add">
+                                            <input type="hidden" name="product_ID" value="{{ product['product_ID'] }}">
+                                            <input type="hidden" name="quantity" value="{{ product['quantity'] }}">
+                                            <input type="hidden" name="price" value="{{ product['price'] }}">
+                                            <button class="Button" id="plus" type="submit">+</button>
+                                        </form>
+                                        <div class="count">{{ product['quantity'] }}</div>
+                                        <form id="minus" method="post" action="/reduce">
+                                            <input type="hidden" name="product_ID" value="{{ product['product_ID'] }}">
+                                            <input type="hidden" name="quantity" value="{{ product['quantity'] }}">
+                                            <input type="hidden" name="price" value="{{ product['price'] }}">
+                                            <button class="Button" id="minus" type="submit">-</button>
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    <h5>המוצר אינו זמין כעת</h5>
+                                {% endif %}
+                                <div class="prices">
+                                    <div class="amount">₪{{ product['total_price'] }}</div>
+                                    <form id="remove_pro" method="post" action="/remove_product">
+                                        <input type="hidden" name="product_ID" value="{{ product['product_ID'] }}">
+                                        <button class="remove" id="remove" type="submit">הסרה</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </li>
+                    {% endfor %}
+                    <br>
+                </ul>
+
+                <div class="checkout">
+                    <div class="total">
+                        <div class="total-amount">₪{{ total_amount | default }}{{ defult_total_amount }}</div>
+                        <div>
+                            <div class="Subtotal">סך הכל</div>
+{#                                     <a target="_blank" href="https://rishum4.yk.co.il/?pattern=79_6#/app/main/register"><button id="order" class="button"> בצע הזמנה </button> </a>#}
+                        </div>
+                    </div>
+{#                    <button id="order" class="button" onclick="location.href='https://rishum4.yk.co.il/?pattern=79_6#/app/main/register',href ='/order_received'">בצע הזמנה</button>#}
+{#                                        <button id="order" class="button" href ="/card" >בצע הזמנה</button>#}
+{#                    <a href="/order_recieved">#}
+{#                    <button id="order" class="button" >בצע הזמנה</button>#}
+{##}
+{#</a>#}
+                        <a href="/order_received">
+            <button class="button">שלח</button>
+        </a>
+                </div>
+                </div>
+
+                </div>
+            {% endif %}
+{% endblock %}

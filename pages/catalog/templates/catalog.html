@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'inventory' %}
+
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('ItemList.static', filename='css/ItemList.css') }}"/>
+{% endblock %}
+{% block page_body_main_content %}
+
+
+    <div class="CartContainer">
+        <div class="Header">
+            <h3 class="Heading">רשימת המוצרים שלנו</h3>
+        </div>
+    <br>
+
+        <div class="SearchPage"><br>
+
+            <ul id="ProductList" style="list-style-type:none;">
+                <div class="renting"><b><u>כמות במלאי</u></b></div>
+                <div>
+ <button id="order" class="button" onclick="document.location='/card'">הוסף מוצר חדש</button>
+    </div>
+                <br><br>
+                {% for product in products %}
+                    <li>
+                        <div class="Cart-Items">
+                            <div class="image-box">
+                                <img src="{{ url_for('ItemList.static', filename=product.product_image) }}"
+                                     alt={{ product["id"] }} style="height:120px"/>
+                            </div>
+                            <div class="about">
+                                <h1 class="title">{{ product['name'] }}</h1>
+                                <h3 class="subtitle">{{ product['description'] }}</h3>
+                            </div>
+                            <div class="status">
+                                {% if product['quantity']>0 %}
+                                    <img src="{{ url_for('ItemList.static', filename='images/available.jpg') }}"
+                                         alt={{ product["id"] }}  style="height:60px"/>
+                                {% else %}
+                                    <img src="{{ url_for('ItemList.static', filename='images/notAvailable.jpeg') }}"
+                                         style="height:60px"/>
+                                {% endif %}
+                            </div>
+
+                            <form id="change" method="post" action="/change_inventory">
+                                <input type="hidden" name="id" value="{{ product['id'] }}">
+                                <input class="amount" type="text" name="quantity" value="{{ product['quantity'] }}">
+                                <button class="Button" id="change" type="submit">בצע שינויים</button>
+                            </form>
+
+                        </div>
+                    </li><br>
+                {% endfor %}
+                {% for kit in kit %}
+                    <li>
+                        <div class="Cart-Items">
+                            <div class="image-box">
+                                <img src="{{ url_for('kit.static', filename=kit.kit_image) }}"
+                                     alt={{ kit["id"] }} style="height:120px"/>
+                            </div>
+                            <div class="about">
+
+                                <h3 class="subtitle">{{ kit['description'] }}</h3>
+                            </div>
+                            <div class="status">
+                                {% if kit['quantity']>0 %}
+                                    <img src="{{ url_for('ItemList.static', filename='images/available.jpg') }}"
+                                         alt={{ kit["id"] }}  style="height:60px"/>
+                                {% else %}
+                                    <img src="{{ url_for('ItemList.static', filename='images/notAvailable.jpeg') }}"
+                                         style="height:60px"/>
+                                {% endif %}
+                            </div>
+
+                            <form id="change_kit" method="post" action="/change_inventory_kit">
+                                <input type="hidden" name="id" value="{{ kit['id'] }}">
+                                <input class="amount" type="text" name="quantity" value="{{ kit['quantity'] }}">
+                                <button class="Button" id="change" type="submit">בצע שינויים</button>
+                            </form>
+
+                        </div>
+                    </li><br>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('ItemList.static', filename='js/ItemList.js') }}"></script>
+{% endblock %}

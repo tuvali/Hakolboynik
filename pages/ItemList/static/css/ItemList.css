@@ -1,0 +1,250 @@
+.SearchPage{
+     text-align: center;
+   }
+.note{
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: rgb(65,25,0);
+  font-family: header;
+  background-color: rgb(189,126,74);
+ }
+   #inputField{
+    height: 5vh;
+    width: 25vw;
+    padding: 7px;
+    border-radius:10px;
+    text-align: right;
+   }
+
+   .Action{
+    float: right;
+    font-size: 18px;
+    font-family: header;
+    font-weight: 600;
+    color: #E44C4C;
+    cursor: pointer;
+    border-bottom: 1px solid #E44C4C;
+   }
+
+   .renting{
+     font-size: 20px;
+     float: right;
+     width: 24vw;
+     font-family: header;
+   }
+
+   .CartContainer{
+     overflow: auto;
+     height: 100vh;
+   }
+
+   .Cart-Items{
+    margin: auto;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+    #ProductList{
+    width: 95%;
+   }
+
+   .image-box{
+    width: 15%;
+    text-align: center;
+   }
+
+   .about{
+    height: 70%;
+   }
+
+   .title{
+    padding-top: 5px;
+    line-height: 20px;
+    font-size: 32px;
+    font-family: header;
+    font-weight: 800;
+    color: black;
+   }
+
+   .subtitle{
+    line-height: 20px;
+    font-size: 20px;
+    font-family: header;
+    font-weight: 1000;
+    color: black;
+    background-color: #D4B897;
+   }
+
+   .counter{
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   .count{
+    font-size: 20px;
+    font-family: header;
+    font-weight: 900;
+    color: black;
+   }
+   .prices{
+    height: 50%;
+    text-align: right;
+   }
+   .amount{
+    padding-top: 20px;
+    font-size: 26px;
+    font-family: header;
+    font-weight: 800;
+    color: black;
+   }
+
+   .remove{
+    padding-top: 5px;
+    font-size: 14px;
+    font-family: header;
+    font-weight: 600;
+    color: #E44C4C;
+    cursor: pointer;
+   }
+   .checkout{
+    float: right;
+    margin-right: 5%;
+    width: 28%;
+   }
+   .total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+   }
+   .Subtotal{
+    font-size: 30px;
+    font-family: header;
+    font-weight: 700;
+    color: #202020;
+   }
+   .items{
+    font-size: 16px;
+    font-family: header;
+    font-weight: 500;
+    color: #909090;
+    line-height: 10px;
+   }
+   .total-amount{
+    font-size: 30px;
+    font-family: header;
+    font-weight: 900;
+    color: #202020;
+   }
+   .button{
+    background-color: rgb(206,139,84);
+    color: white;
+    border-radius: 15px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    border: solid rgba(131,80,46);
+    font-family: header;
+    font-size: 20px;
+   }
+   .Button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6d6b6b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:150%;
+    font-family: header;
+    font-weight: 900;
+    color:  #202020;
+    cursor: pointer;
+   }
+
+/*bubble menu*/
+
+ion-icon {
+  font-size: 25px;
+}
+
+
+
+@media (max-width: 600px) {
+
+	.footer-distributed {
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-company-name{
+		font-size: 12px;
+	}
+
+  .title{
+    font-size: 25px;
+  }
+  .image-box{
+    width: fit-content;
+  }
+  .status{
+    display: none;
+  }
+  .subtitle{
+    display: none;
+    width: 20vw;
+  }
+  .counter{
+    width: 20vw;
+  }
+  .Heading{
+    font-size: 50px ;
+  }
+  .Subtotal{
+    font-size: 20px ;
+  }
+  .total-amount{
+    font-size: 20px;
+  }
+  .renting{
+    width: 18vw;
+  }
+  .amount{
+    font-size: 20px;
+  }
+
+  .DIY1{
+    width: 100%;
+  }
+  .DIY2{
+    width: 100%;
+  }
+  .DIY3{
+    width: 100%;
+  }
+  .DIY4{
+    width: 100%;
+  }
+  .DIY5{
+    width: 100%;
+  }
+  .DIY6{
+    width: 100%;
+  }
+
+
+
+
+      ion-icon {
+        font-size: 15px;
+      }
+
+      .Heading{
+        font-size: 50px;
+      }
+}
