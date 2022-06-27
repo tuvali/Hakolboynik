@@ -7,10 +7,9 @@ import mysql.connector
 # ------------------------------------------------- #
 def interact_db(query, query_type: str):
     return_value = False
-    connection = mysql.connector.connect(host='localhost',
+    connection = mysql.connector.connect(host='34.123.35.73',
                                          user='root',
-                                         passwd='root',
-                                         database='web_project_g3')
+                                         database='Hakolboynik')
     cursor = connection.cursor(named_tuple=True)
     cursor.execute(query)
     #

@@ -15,23 +15,26 @@
             <ul id="ProductList" style="list-style-type:none;">
                 <div class="renting"><b><u>מחיר ליום השכרה</u></b></div>
                 <br><br>
-                {% for order in orders %}
-                    <li>
-                        <div class="Cart-Items">
-
-                            <div class="about">
-                                <h1 class="title">{{ order['id'] }}</h1>
-                            </div>
-
-                            <div class="prices">
-                                <div class="amount">₪{{ order['order_Cost'] }}</div>
-                            </div>
-                            <h3 class="subtitle">{{ order['payer_email'] }}</h3>
-                            <h3 class="subtitle">{{ order['order_Date'] }}</h3>
-
-                        </div>
-                    </li><br>
-                {% endfor %}
+                <table width="100%">
+                    <tr style="font-size: 35px;" bgcolor="white">
+                      <th>הערות</th>
+                      <th>מספר הזמנה</th>
+                      <th>מחיר</th>
+                      <th>אימייל</th>
+                      <th>תאריך</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr style="font-size: 35px;" bgcolor="white">
+                          <th>
+                              <input>
+                          </th>
+                          <th>{{ order['id'] }}</th>
+                          <th>{{ order['order_Cost'] }}</th>
+                          <th>{{ order['payer_email'] }}</th>
+                          <th>{{ order['order_Date'] }}</th>
+                        </tr>
+                    {% endfor %}
+                </table>
             </ul>
 
         </div>
